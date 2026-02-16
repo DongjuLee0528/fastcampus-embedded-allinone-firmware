@@ -13,7 +13,7 @@ int main(void) {
 
         // LED OFF: PB5를 LOW로 설정
         PORTB &= ~(1 << PB5);
-        _delay_ms(1000);  // 1초 대기
+        _delay_ms(1000);  // 1초 대기P
     }
 
     return 0;
