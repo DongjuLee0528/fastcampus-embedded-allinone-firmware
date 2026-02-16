@@ -11,7 +11,7 @@ struct io_port{
     /* data */
 };
 int main(void){
-    struct io_port *portB = (void *)PORTB_REG;
+    struct io_port *portB = (void *)PORTB_REG; //(void *) 포인터를 사용해서 상수값을 주소 값으로 변경 한 후 매칭 진행
     portB->ddr = 0x20;
 
     while (1)

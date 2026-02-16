@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "../LED0"
+		},
+		{
+			"name": "fastcampus-embedded-allinone-firmware",
+			"path": "."
+		}
+	],
+	"settings": {}
+}
