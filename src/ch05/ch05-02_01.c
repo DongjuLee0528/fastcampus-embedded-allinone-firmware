@@ -1,0 +1,1 @@
+#define F_UCPU 16000000UL
