@@ -16,3 +16,13 @@ void adcInit (void){
     sbi(ADCSRA, ADPS2);
     sbi(ADCSRA, ADEN);
 }
+ void UART_INIT(void){
+    sbi(UCSR0A, U2X0);
+
+    UBRR0H = 0x00;
+    UBRR0L = 207;
+    UCSR0C |= 0x06;
+    
+    sbi(UCSR0B, RXEN0);
+    sbi(UCSR0B, TXEN0);
+ }
