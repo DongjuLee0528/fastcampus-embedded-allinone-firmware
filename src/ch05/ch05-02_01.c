@@ -56,3 +56,20 @@ uint16_t readADC(uint8_t channel)
 
     return ADC;
 }
+int main(void)
+{
+    char buffer[10] = {0};
+    uint16_t adcValue = 0;
+
+    adcInit();
+    UART_INIT();
+
+    while (1)
+    {
+        adcValue = readADC(0);
+        itoa(adcValue, buffer, 10);
+        UART_string_transmit(buffer);
+        UART_tranmit('\n');
+        _delay_ms(500);
+    }
+}
