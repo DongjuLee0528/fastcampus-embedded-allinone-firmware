@@ -41,7 +41,7 @@ void adcInit (void){
 {
     while(*string != '\0')
     {
-        UART_tranmit(*string);
+        UART_TRANSMIT(*string);
         string++;
     }
 }
@@ -69,7 +69,7 @@ int main(void)
         adcValue = readADC(0);
         itoa(adcValue, buffer, 10);
         UART_string_transmit(buffer);
-        UART_tranmit('\n');
+        UART_TRANSMIT('\n');
         _delay_ms(500);
     }
 }
