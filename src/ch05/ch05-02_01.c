@@ -22,7 +22,37 @@ void adcInit (void){
     UBRR0H = 0x00;
     UBRR0L = 207;
     UCSR0C |= 0x06;
-    
+
     sbi(UCSR0B, RXEN0);
     sbi(UCSR0B, TXEN0);
  }
+
+ unsigned char UART_RECEIVE(void){
+    while( !(UCSR0A & (1 << RXC0)) );
+    return UDR0;
+ }
+
+ void UART_TRANSMIT(unsigned char data){
+    while( !(UCSR0A & (1 << UDRE0)) );
+    UDR0 = data;
+ }
+
+ void UART_string_transmit(char *string)
+{
+    while(*string != '\0')
+    {
+        UART_tranmit(*string);
+        string++;
+    }
+}
+
+uint16_t readADC(uint8_t channel)
+{
+    ADMUX &= 0xF0;
+    ADMUX |= channel;
+
+    sbi(ADCSRA, ADSC);
+    while(ADCSRA & (1 << ADSC));
+
+    return ADC;
+}
