@@ -35,8 +35,8 @@ void overflow_timer_init(void)
 {
     cli(); //인터럽트 비활성화
    
-    DDRD |=(1 <<PD6);
-    PORTD &= ~(1 << PD6);
+    DDRD |=(1 <<PD6); //PD6 핀을 출력으로 설정
+    PORTD &= ~(1 << PD6); //초기값 LOW
 
     TCCR0A = 0x00;
     TCCR0B = (1 << CS02) | (1 << CS00); 
