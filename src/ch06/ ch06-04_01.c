@@ -21,3 +21,12 @@ ISR(TIMER0_OVF_vect)
         counter++;
     }
 }
+
+int main(void){
+    overflow_timer_init();
+
+    while (1)
+    {
+       
+    }
+}
