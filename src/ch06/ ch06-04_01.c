@@ -38,7 +38,7 @@ void overflow_timer_init(void)
     DDRD |=(1 <<PD6); //PD6 핀을 출력으로 설정
     PORTD &= ~(1 << PD6); //초기값 LOW
 
-    TCCR0A = 0x00;
+    TCCR0A = 0x00; //Normal mode
     TCCR0B = (1 << CS02) | (1 << CS00); 
 
     TCNT0 = 0;
