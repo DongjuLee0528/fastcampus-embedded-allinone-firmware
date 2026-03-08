@@ -41,7 +41,7 @@ void overflow_timer_init(void)
     TCCR0A = 0x00; //Normal mode
     TCCR0B = (1 << CS02) | (1 << CS00); 
 
-    TCNT0 = 0;
+    TCNT0 = 0;//타이머 카운터 초기화
     TIMSK0 = (1 << TOIE0);
 
     sei();
