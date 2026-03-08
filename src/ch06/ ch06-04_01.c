@@ -30,3 +30,12 @@ int main(void){
        
     }
 }
+
+void overflow_timer_init(void)
+{
+   cli();
+   
+   DDRD |=(1 <<PD6);
+
+
+}
