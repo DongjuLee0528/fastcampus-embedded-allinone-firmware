@@ -33,9 +33,12 @@ int main(void){
 
 void overflow_timer_init(void)
 {
-   cli();
+    cli();
    
-   DDRD |=(1 <<PD6);
+    DDRD |=(1 <<PD6);
+    PORTD &= ~(1 << PD6);
 
+    TCCR0A = 0x00;
+    TCCR0B = (1 << CS02) | (1 << CS00); 
 
 }
