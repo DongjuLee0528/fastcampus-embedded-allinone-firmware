@@ -10,14 +10,14 @@ volatile uint8_t counter = 0;
 
 void overflow_timer_init(void);
 
-ISR(TIMER0_OVF_vect)
+ISR(TIMER0_OVF_vect) //timer0 overflow 인터럽트 서비스 루틴
 {
-    if (counter >= 62){
-        sbi(PORTD, 6);
+    if (counter >= 62){ //62 * 256 = 15872, 약 1초
+        sbi(PORTD, 6); // PD6 핀 HIGH
         counter = 0;
     }
     else{
-        cbi(PORTD, 6);
+        cbi(PORTD, 6); // PD6 핀 LOW
         counter++;
     }
 }
@@ -27,13 +27,13 @@ int main(void){
 
     while (1)
     {
-       
+       // 메인 루프에서는 아무것도 하지 않음
     }
 }
 
 void overflow_timer_init(void)
 {
-    cli();
+    cli(); //인터럽트 비활성화
    
     DDRD |=(1 <<PD6);
     PORTD &= ~(1 << PD6);
@@ -43,7 +43,7 @@ void overflow_timer_init(void)
 
     TCNT0 = 0;
     TIMSK0 = (1 << TOIE0);
-    
+
     sei();
 
 }
