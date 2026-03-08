@@ -42,8 +42,8 @@ void overflow_timer_init(void)
     TCCR0B = (1 << CS02) | (1 << CS00); //1024분주 (클럭 = 16MHZ / 1024 = 15625Hz)
 
     TCNT0 = 0;//타이머 카운터 초기화
-    TIMSK0 = (1 << TOIE0);
+    TIMSK0 = (1 << TOIE0);//오버플로우 인터럽트 허용
 
-    sei();
+    sei(); // 전역 인터럽트 활성화
 
 }
